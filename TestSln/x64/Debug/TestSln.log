@@ -1,0 +1,8 @@
+﻿  TestSln.cpp
+TestSln.obj : error LNK2019: 无法解析的外部符号 "class boost::system::error_category const & __cdecl boost::system::system_category(void)" (?system_category@system@boost@@YAAEBVerror_category@12@XZ)，该符号在函数 "void __cdecl boost::system::`dynamic initializer for 'native_ecat''(void)" (??__Enative_ecat@system@boost@@YAXXZ) 中被引用
+TestSln.obj : error LNK2019: 无法解析的外部符号 "class boost::system::error_category const & __cdecl boost::system::generic_category(void)" (?generic_category@system@boost@@YAAEBVerror_category@12@XZ)，该符号在函数 "void __cdecl boost::system::`dynamic initializer for 'errno_ecat''(void)" (??__Eerrno_ecat@system@boost@@YAXXZ) 中被引用
+D:\my_project\boost_1_65_1\stage\lib\libboost_thread-vc140-mt-gd-1_65_1.lib : warning LNK4272: 库计算机类型“X86”与目标计算机类型“x64”冲突
+D:\my_project\boost_1_65_1\stage\lib\libboost_system-vc140-mt-gd-1_65_1.lib : warning LNK4272: 库计算机类型“X86”与目标计算机类型“x64”冲突
+D:\my_project\boost_1_65_1\stage\lib\libboost_date_time-vc140-mt-gd-1_65_1.lib : warning LNK4272: 库计算机类型“X86”与目标计算机类型“x64”冲突
+D:\my_project\boost_1_65_1\stage\lib\libboost_chrono-vc140-mt-gd-1_65_1.lib : warning LNK4272: 库计算机类型“X86”与目标计算机类型“x64”冲突
+D:\my_project\TestSln\x64\Debug\TestSln.exe : fatal error LNK1120: 2 个无法解析的外部命令
