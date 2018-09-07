@@ -50,11 +50,8 @@ int main()
 	//ConditionDefine();
 	//AssertExec();
 
-	//GenernalClass g1;
-	//g1.Start();
-
-	char *s = "hello";
-	cout << SAFE_DEBUG(<< LVAR(s));
+	GenernalClass g1;
+	g1.Start();
 
 	
 // 	{

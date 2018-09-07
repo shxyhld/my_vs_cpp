@@ -105,6 +105,9 @@ public:
 	virtual void PrintName() {
 		cout << "This class name is InterfaceClass" << endl;
 	}
+	virtual void TestVirtualFunc1() = 0;
+
+	virtual void TestVirtualFunc2(){}
 private:
 
 };
@@ -124,6 +127,25 @@ public:
 	}
 
 private:
+};
+
+class ImplementClass2 :public ImplementClass
+{
+public:
+	ImplementClass2() {
+		cout << "call default ImplementClass2 construction" << endl;
+	}
+	~ImplementClass2() {
+		cout << "call default ImplementClass2 deconstrution" << endl;
+	}
+
+	virtual void TestVirtualFunc1() {
+		cout << "call ImplementClass2's TestVirtualFunc1" << endl;
+	}
+
+	virtual void TestVirtualFunc2() {
+		cout << "call ImplementClass2's TestVirtualFunc2" << endl;
+	}
 };
 
 struct LSqlQueryExecutor {
@@ -169,6 +191,7 @@ public:
 	void Func7();
 	void Func8();
 	void Func9();
+	void Func10();
 private:
 
 };
@@ -185,7 +208,8 @@ void GenernalClass::Start()
 {
 	//Func6();
 	//Func8();
-	Func9();
+	//Func9();
+	Func10();
 // 	vector<string> realNames = getNames();
 // 	for (auto &c : realNames)
 // 	{
@@ -276,11 +300,11 @@ void GenernalClass::Func6()
 	}
 
 
-	{
-		InterfaceClass* ic1 = new ImplementClass();
-		ic1->PrintName();
-		delete ic1;
-	}
+// 	{
+// 		InterfaceClass* ic1 = new ImplementClass();
+// 		ic1->PrintName();
+// 		delete ic1;
+// 	}
 }
 
 void GenernalClass::Func7()
@@ -388,5 +412,34 @@ void GenernalClass::Func9()
 	std::string s;
 	exetor >> i_1 >> i_2 >> l_1 >> l_2 >> f >> d >> s;
 	cout << SAFE_DEBUG(<< LVAR(i_1) << LVAR(i_2) << LVAR(l_1) << LVAR(l_2) << LVAR(f) << LVAR(d) << LVAR(s));
+}
+
+/*
+类的继承关系：
+ImplementClass 继承自 InterfaceClass
+ImplementClass2 继承自 ImplementClass
+*/
+//测试验证几个情况：
+/*
+1.有纯虚方法的对象不允许实例化。即InterfaceClass不能被实例化。
+2.如果ImplementClass不实例化对象，那么ImplementClass不必实现InterfaceClass的纯虚方法：TestVirtualFunc1。
+3.反之，如果需要实例化ImplementClass，则必须要实现TestVirtualFunc1。
+4.如果ImplementClass不实例化对象，也没有实现TestVirtualFunc1，ImplementClass2是可以通过实现TestVirtualFunc1，来实例化对象的。
+*/
+void GenernalClass::Func10()
+{
+	//1：应该编译不过;
+	//InterfaceClass interfaceObj;
+
+	//3.
+	//ImplementClass implObj;
+
+	//4.
+	InterfaceClass* imp2Obj = new ImplementClass2();
+	imp2Obj->TestVirtualFunc1();
+	imp2Obj->TestVirtualFunc2();
+	
+	delete imp2Obj;
+	imp2Obj = NULL;
 }
 
